@@ -1,0 +1,49 @@
+.header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 44rem 0;
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-logo{
+    a{
+      display: flex;
+      align-items: center;
+      img{
+        width: 44.15rem;
+        height: 54rem;
+        display: inline-block;
+        margin-right: 15rem;
+      }
+      span{
+        font-size: 28.38rem;
+        line-height: 28.38rem;
+        font-weight: 700;
+        color: $white;
+        font-family: $Gilroy;
+      }
+    }
+  }
+  &-nav{
+    margin: 0 auto;
+    ul{
+      display: flex;
+      column-gap: 40rem;
+    }
+    a{
+      font-size: 24rem;
+      font-family: $Inter;
+      font-weight: 400;
+      color: $white;
+      &:hover{
+        color: $primary;
+      }
+    }
+  }
+}

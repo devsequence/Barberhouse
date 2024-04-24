@@ -1,0 +1,74 @@
+.footer{
+  background-color: #1C1C1C;
+  padding: 90rem 0;
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &-logo{
+    max-width: 384rem;
+    a{
+      display: flex;
+      align-items: center;
+      img{
+        width: 44.15rem;
+        height: 54rem;
+        display: inline-block;
+        margin-right: 15rem;
+      }
+      span{
+        font-size: 28.38rem;
+        line-height: 28.38rem;
+        font-weight: 700;
+        color: $white;
+        font-family: $Gilroy;
+      }
+    }
+    &-text{
+      display: block;
+      font-size: 16rem;
+      font-family: $Inter;
+      font-weight: 400;
+      color: $white;
+      margin: 30rem 0 70rem;
+    }
+  }
+  &-title{
+    font-size: 16rem;
+    font-family: $Inter;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 30rem;
+  }
+  &-nav{
+    li{
+      margin-bottom: 12rem;
+    }
+    a{
+      font-size: 16rem;
+      font-family: $Inter;
+      font-weight: 400;
+      color: $white;
+      &:hover{
+        color: $primary;
+      }
+    }
+  }
+  &-wrap{
+    margin: 0 0 0 auto;
+    display: flex;
+  }
+  &-item{
+    margin-right: 85px;
+    &:last-of-type{
+      margin-right: 0;
+    }
+  }
+  &-copy{
+    width: 100%;
+    font-size: 16rem;
+    font-family: $Inter;
+    font-weight: 400;
+    color: rgba($white , .5);
+  }
+}

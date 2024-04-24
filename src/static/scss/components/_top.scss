@@ -1,0 +1,82 @@
+.page-top{
+  width: 100%;
+  background-color: rgba($secondary-100, .4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 13rem 0 8rem;
+  position: relative;
+  overflow: hidden;
+  &:before, &:after{
+    position: absolute;
+    content: '';
+    width: 15rem;
+    height: 15rem;
+    background: rgba($white, .05);
+  }
+  &:before{
+    right: 22.5rem;
+    bottom: 11rem;
+  }
+  &:after{
+    right: 5.5rem;
+    bottom: -6rem;
+  }
+}
+.bread-crumbs{
+  margin-bottom: 4rem;
+  ul{
+    display: flex;
+    align-items: center;
+  }
+  li{
+    color: $white;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    margin-right: 3.2rem;
+    position: relative;
+    &:after{
+      position: absolute;
+      content: '';
+      right: -2.2rem;
+      top: 50%;
+      margin-top: -.6rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cg %3E%3Cpath d='M11.8082 6.46625L7.47457 10.8C7.35086 10.9237 7.18599 10.9916 7.01019 10.9916C6.83419 10.9916 6.66941 10.9236 6.5457 10.8L6.15224 10.4064C6.02863 10.2829 5.96054 10.1179 5.96054 9.94202C5.96054 9.76622 6.02863 9.59569 6.15224 9.47217L8.68041 6.93844H0.648287C0.286144 6.93844 0 6.65493 0 6.29269V5.7363C0 5.37406 0.286144 5.06197 0.648287 5.06197H8.7091L6.15234 2.51409C6.02873 2.39038 5.96063 2.22989 5.96063 2.05399C5.96063 1.87829 6.02873 1.71546 6.15234 1.59185L6.5458 1.19956C6.6695 1.07585 6.83428 1.00844 7.01028 1.00844C7.18609 1.00844 7.35096 1.07673 7.47467 1.20044L11.8083 5.53406C11.9323 5.65816 12.0005 5.82381 12 5.99991C12.0004 6.17659 11.9323 6.34235 11.8082 6.46625Z' fill='white'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: .6;
+    }
+    &:hover{
+      a{
+        color: $white;
+      }
+    }
+    &:last-of-type{
+      margin-right: 0;
+      &:after{
+        display: none;
+      }
+    }
+  }
+  a{
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    display: flex;
+    align-items: center;
+    color: rgba($white,.6);
+    .icon{
+      width: 1.3rem;
+      height: 1.3rem;
+      fill: $white;
+      margin-right: .8rem;
+    }
+  }
+}
+.title-page{
+  font-weight: 700;
+  font-size: 8rem;
+  line-height: 1;
+  color: $white;
+}
