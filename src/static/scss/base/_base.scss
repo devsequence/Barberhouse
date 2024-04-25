@@ -35,7 +35,9 @@ body {
 }
 
 .container{width:100%;padding-right:15rem;padding-left:15rem;margin-right:auto;margin-left:auto; max-width: 1230rem;}
-
+@media screen and (max-width: 768px){
+  .container{padding-right:24rem;padding-left:24rem;}
+}
 .wrapper {
   display: flex;
   flex-direction: column;
