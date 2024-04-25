@@ -150,39 +150,6 @@ input, textarea {
   color: #182528;
   margin-bottom: 4rem;
 }
-.input, .textarea {
-  background: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  box-sizing: border-box;
-  border-radius: 2px;
-  outline: none;
-  font-family: $Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 18px;
-  color: $default-100;
-  padding: 2rem 2rem;
-  &::-webkit-input-placeholder {
-    color: #67696D;
-  }
-  &::-moz-placeholder {
-    color: #67696D;
-  }
-  &:-moz-placeholder {
-    color: #67696D;
-  }
-  &::-ms-input-placeholder {
-    color: #67696D;
-  }
-  &:-ms-input-placeholder {
-    color: #67696D;
-  }
-  &:focus,
-  &:active {
-    border-color: #007756;
-  }
-}
 .hide-md{
   display: none;
 }

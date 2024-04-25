@@ -53,20 +53,20 @@
 						<ul>
 							<li>
 								<span>Выбрать барбера</span>
-								<span class="disabled">Не выбрано</span>
+								<span data-name="master" class="disabled">Не выбрано</span>
 							</li>
 							<li>
 								<span>Выбрать услуги</span>
-								<span class="disabled">Не выбрано</span>
+								<span data-name="service" class="disabled">Не выбрано</span>
 							</li>
 							<li>
 								<span>Выбрать дату и время</span>
-								<span class="disabled">Не выбрано</span>
+								<span data-name="date" class="disabled">Не выбрано</span>
 							</li>
 						</ul>
 					</div>
 					<div class="registration-inner">
-						<div class="registration-step" data-step="step-1">
+						<div class="registration-step active" data-step="step-1">
 							<div class="team-wrap">
 								<div class="team-item">
 									<a href="#" class="team-item-media">
@@ -105,7 +105,6 @@
 									<div class="team-item-title">Ильдус Шайхиев</div>
 								</div>
 							</div>
-
 						</div>
 						<div class="registration-step" data-step="step-2">
 							<div class="service-wrap">
@@ -125,31 +124,58 @@
 						</div>
 						<div class="registration-step" data-step="step-3">
 							<div class="date"></div>
-							<ul class="tile">
-								<li><a href="#">11:00</a></li>
-								<li><a href="#">12:00</a></li>
-								<li><a href="#">13:00</a></li>
-								<li><a href="#">15:00</a></li>
-								<li><a href="#">16:00</a></li>
-								<li><a href="#">17:00</a></li>
-								<li><a href="#">18:00</a></li>
-								<li><a href="#">19:00</a></li>
-								<li><a href="#">20:00</a></li>
-								<li><a href="#">21:00</a></li>
+							<ul class="time">
+								<li>11:00</li>
+								<li>12:00</li>
+								<li>13:00</li>
+								<li>15:00</li>
+								<li>16:00</li>
+								<li>17:00</li>
+								<li>18:00</li>
+								<li>19:00</li>
+								<li>20:00</li>
+								<li>21:00</li>
 							</ul>
 						</div>
 						<div class="registration-step" data-step="step-4">
-							Введите ваше имя
-							Введите ваш номер телефона
-							Я согласен с обработкой персональных данных
-							Итого: <span>1500 ₽</span>
+							<label class="hidden">
+								<input type="text" name="master">
+							</label>
+							<label class="hidden">
+								<input type="text" name="service">
+							</label>
+							<label class="hidden">
+								<input type="text" name="time">
+							</label>
+							<label>
+								<input type="text" name="name" placeholder="Введите ваше имя">
+							</label>
+							<label>
+								<input type="tel" name="phone" placeholder="Введите ваш номер телефона">
+							</label>
+							<div class="modal">
+								<input type="checkbox" name="checkbox" id="checkbox">
+								<label for="checkbox">
+									Я согласен с обработкой персональных данных
+								</label>
+
+							</div>
+							<div class="modal-subtotal">
+								Итого: <span class="subtotal">1500 ₽</span>
+							</div>
 							<button type="submit" class="btn-primary">записаться</button>
 						</div>
-						<div class="registration-step" data-step="step-5">
-							Вы записаны!
-							<a href="index.html">Вернуться на главную</a>
-						</div>
 					</div>
+					<div class="registration-button">
+						<button type="button" class="prev disabled"></button>
+						<button type="button" class="next disabled"></button>
+					</div>
+				</div>
+				<div class="registration-success">
+					<div class="registration-success-title">
+						Вы записаны!
+					</div>
+					<a href="index.html">Вернуться на главную</a>
 				</div>
 			</div>
 			</form>
