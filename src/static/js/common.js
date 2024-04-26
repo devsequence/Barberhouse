@@ -52,58 +52,30 @@ $('.registration-step .service-item').on('click', function (e) {
     $("[name='service']").val($thsTitle);
 });
 
+function updateNavDate(){
+    const $thsDay = $('.date-list-title').text();
+    const $thsMonths = $('#months .active').data('month');
+    const $thsTime = $('.time li.active');
+    $('.date-list-title').text($('#days li.active').text());
+    $(".registration-nav").find("[data-name='date']").removeClass('disabled').html($thsDay +' '+ $thsMonths +', '+ $thsTime.text());
+}
+
 $('.registration-step .time li').on('click', function (e) {
     e.preventDefault();
     const $ths = $(this);
     const $thsDay = $('.date-list-title').text();
     const $thsMonths = $('#months .active').data('month');
-    // const $thsTitle = $ths.find('.service-item-title').text();
-    // const $thsPrice = $ths.find('.service-item-price').text();
-    $('.registration-step .time li').removeClass('active');
-    $ths.addClass('active');
-    $(".registration-nav").find("[data-name='date']").removeClass('disabled').html($thsDay +' '+ $thsMonths +', '+ $ths.text());
-    // $('.subtotal').text($thsPrice);
-    $("[name='time']").val($("[data-name='date']").text());
-});
-$(document).on('click', '.registration-date li', function (e) {
-    e.preventDefault();
-    const $ths = $(this);
-    if($ths.hasClass('disabled')){}else {
-        $('.registration-date li').removeClass('active');
+    if($ths.hasClass('disabled')){}else{
+        $('.registration-step .time li').removeClass('active');
         $ths.addClass('active');
-        $ths.parent().prev().text($ths.text());
+        $(".registration-nav").find("[data-name='date']").removeClass('disabled').html($thsDay +' '+ $thsMonths +', '+ $ths.text());
+        $("[name='time']").val($("[data-name='date']").text());
     }
 });
-$('.date-list-title, .months-list-title').on('click', function (e) {
-    e.preventDefault();
-    const $ths = $(this);
-    $('.date-list ul, .months-list ul').removeClass('active');
-    $ths.next().toggleClass('active');
-});
-
-$(document).ready(function() {
-    var currentDate = new Date();
-    var currentDay = currentDate.getDate();
-    var currentMonth = currentDate.getMonth();
-    var currentYear = currentDate.getFullYear();
-    var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-    for (var i = 1; i <= daysInMonth; i++) {
-        var $day = $("<li>" + i + "</li>");
-        if (i === currentDay) {
-            $day.addClass("active");
-        } else if (i < currentDay) {
-            $day.addClass("disabled");
-        }
-        $("#days").append($day);
-    }
-    $('.date-list-title').text(currentDay);
-});
-$(document).ready(function() {
+function daysUpdate() {
     var currentDate = new Date();
     var currentMonth = currentDate.getMonth();
     var currentYear = currentDate.getFullYear();
-
     var months = [
         "Январь", "Февраль", "Март", "Апрель",
         "Май", "Июнь", "Июль", "Август",
@@ -115,7 +87,7 @@ $(document).ready(function() {
         "Сентября", "Октября", "Ноября", "Декабря"
     ];
     for (var i = 0; i < months.length; i++) {
-        var $month = $("<li data-month="+ monthsDate[i] + ">" + months[i] + "</li>");
+        var $month = $("<li data-month-number="+[i]+" data-month="+ monthsDate[i] + ">" + months[i] + "</li>");
         if (i === currentMonth) {
             $month.addClass("active");
         } else if (i < currentMonth) {
@@ -123,9 +95,64 @@ $(document).ready(function() {
         }
         $("#months").append($month);
     }
-
     $('.months-list-title').text(months[currentMonth]);
+}
+daysUpdate();
+function monthsUpdate() {
+    var currentDate = new Date();
+    var currentDay = currentDate.getDate();
+    var currentMonth = currentDate.getMonth();
+    var currentYear = currentDate.getFullYear();
+    var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    var selectedMonth = $("#months li.active").data('month-number') + 1;
+    var daysInMonthSelected = new Date(new Date().getFullYear(), selectedMonth, 0).getDate();
+    $("#days").empty();
+    for (var i = 1; i <= daysInMonthSelected; i++) {
+        var $day = $("<li>" + i + "</li>");
+        if(currentMonth+1 === selectedMonth){
+            if (i === currentDay) {
+                $day.addClass("active");
+            } else if (i < currentDay) {
+                $day.addClass("disabled");
+            }
+        }else{
+            $("#days li:first-child").addClass('active');
+        }
+        $("#days").append($day);
+    }
+}
+monthsUpdate();
+$(document).on('click', '#days li', function (e) {
+    e.preventDefault();
+    const $ths = $(this);
+    if($ths.hasClass('disabled')){}else {
+        $('#days li').removeClass('active');
+        $ths.addClass('active');
+        $ths.parent().removeClass('active');
+        $ths.parent().prev().text($ths.text());
+        updateNavDate();
+    }
 });
+$(document).on('click', '#months li', function (e) {
+    e.preventDefault();
+    const $ths = $(this);
+    if($ths.hasClass('disabled')){}else {
+        $('#months li').removeClass('active');
+        $ths.addClass('active');
+        $ths.parent().removeClass('active');
+        $ths.parent().prev().text($ths.text());
+
+        monthsUpdate();
+        updateNavDate();
+    }
+});
+$('.date-list-title, .months-list-title').on('click', function (e) {
+    e.preventDefault();
+    const $ths = $(this);
+    $('.date-list ul, .months-list ul').removeClass('active');
+    $ths.next().toggleClass('active');
+});
+
 $(document).ready(function() {
     var currentDate = new Date();
     var currentDay = currentDate.getDay(); // Получаем день недели (0 - воскресенье, 1 - понедельник, и т.д.)
@@ -136,7 +163,6 @@ $(document).ready(function() {
         } else if (dayNumber < currentDay) {
             $(this).addClass("disabled");
         }
-
     });
     $('.week-list-title').text(currentDay);
 });
@@ -146,11 +172,9 @@ $(document).ready(function() {
     var currentDay = currentDate.getDay(); // Получаем день недели (0 - воскресенье, 1 - понедельник, и т.д.)
     var startOfWeek = new Date(currentDate);
     startOfWeek.setDate(currentDate.getDate() - currentDay); // Получаем начало текущей недели
-
     $(".day").each(function() {
         var day = new Date(startOfWeek);
         day.setDate(startOfWeek.getDate() + $(this).index()); // Получаем дату текущего дня недели
-
         // $(this).text(day.getDate()); // Выводим номер дня месяца
 
         if (day.getDate() === currentDate.getDate()) {
@@ -188,3 +212,9 @@ $('.next').on('click', function (e) {
         }
     }
 });
+//
+// var dayOfMonth = 4;
+// var date = new Date(new Date().getFullYear(), new Date().getMonth() + 1, dayOfMonth);
+// console.log(date);
+// var dayOfWeek = date.toLocaleDateString('ru-UA', { weekday: 'short' });
+// $('#result').text(dayOfWeek);

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
 	@@include('./includes/_head.html')
 </head>
@@ -92,7 +92,7 @@
 						<div class="registration-step" data-step="step-3">
 							<div class="registration-date">
 								<div class="date-list">
-									<div class="date-list-title"></div>
+									<div class="date-list-title">1</div>
 									<ul id="days" class="hidden"></ul>
 								</div>
 								<div class="months-list">
@@ -113,8 +113,8 @@
 								</div>
 							</div>
 							<ul class="time">
-								<li>11:00</li>
-								<li>12:00</li>
+								<li class="disabled">11:00</li>
+								<li class="active">12:00</li>
 								<li>13:00</li>
 								<li>15:00</li>
 								<li>16:00</li>
@@ -124,6 +124,7 @@
 								<li>20:00</li>
 								<li>21:00</li>
 							</ul>
+							<div class="hidden not-available">В этот день нет свободного времени.</div>
 						</div>
 						<div class="registration-step" data-step="step-4">
 							<label class="hidden">
