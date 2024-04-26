@@ -51,13 +51,19 @@ $('.registration-step .service-item').on('click', function (e) {
     $('.subtotal').text($thsPrice);
     $("[name='service']").val($thsTitle);
 });
-
 function updateNavDate(){
     const $thsDay = $('.date-list-title').text();
     const $thsMonths = $('#months .active').data('month');
     const $thsTime = $('.time li.active');
     $('.date-list-title').text($('#days li.active').text());
     $(".registration-nav").find("[data-name='date']").removeClass('disabled').html($thsDay +' '+ $thsMonths +', '+ $thsTime.text());
+    $("[name='time']").val($("[data-name='date']").text());
+    var dayOfMonth = $('#days li.active').text();
+    var dOfMonth = $('#months .active').data('month-number') + 1;
+    var date = new Date(new Date().getFullYear(), new Date().getMonth() - 4 + dOfMonth, dayOfMonth);
+    console.log(date);
+    var dayOfWeek = date.toLocaleDateString('ru-UA', { weekday: 'short' });
+    $('.week-list-title').text(dayOfWeek)
 }
 
 $('.registration-step .time li').on('click', function (e) {
@@ -70,6 +76,7 @@ $('.registration-step .time li').on('click', function (e) {
         $ths.addClass('active');
         $(".registration-nav").find("[data-name='date']").removeClass('disabled').html($thsDay +' '+ $thsMonths +', '+ $ths.text());
         $("[name='time']").val($("[data-name='date']").text());
+        updateNavDate();
     }
 });
 function daysUpdate() {
@@ -129,7 +136,7 @@ $(document).on('click', '#days li', function (e) {
         $('#days li').removeClass('active');
         $ths.addClass('active');
         $ths.parent().removeClass('active');
-        $ths.parent().prev().text($ths.text());
+        $ths.parent().prev().text($ths.text()).removeClass('active');
         updateNavDate();
     }
 });
@@ -140,22 +147,28 @@ $(document).on('click', '#months li', function (e) {
         $('#months li').removeClass('active');
         $ths.addClass('active');
         $ths.parent().removeClass('active');
-        $ths.parent().prev().text($ths.text());
-
+        $ths.parent().prev().text($ths.text()).removeClass('active');
         monthsUpdate();
         updateNavDate();
     }
 });
-$('.date-list-title, .months-list-title').on('click', function (e) {
+$('.date-list-title').on('click', function (e) {
     e.preventDefault();
     const $ths = $(this);
-    $('.date-list ul, .months-list ul').removeClass('active');
+    $ths.toggleClass('active');
     $ths.next().toggleClass('active');
+    $('.months-list-title, .months-list ul').removeClass('active');
 });
-
+$('.months-list-title').on('click', function (e) {
+    e.preventDefault();
+    const $ths = $(this);
+    $ths.toggleClass('active');
+    $ths.next().toggleClass('active');
+    $('.date-list-title, .date-list ul').removeClass('active');
+});
 $(document).ready(function() {
     var currentDate = new Date();
-    var currentDay = currentDate.getDay(); // Получаем день недели (0 - воскресенье, 1 - понедельник, и т.д.)
+    var currentDay = currentDate.getDay();
     $(".day").each(function() {
         var dayNumber = parseInt($(this).text());
         if (dayNumber === currentDay) {
@@ -164,19 +177,16 @@ $(document).ready(function() {
             $(this).addClass("disabled");
         }
     });
-    $('.week-list-title').text(currentDay);
+    // $('.week-list-title').text(currentDay);
 });
-
 $(document).ready(function() {
     var currentDate = new Date();
-    var currentDay = currentDate.getDay(); // Получаем день недели (0 - воскресенье, 1 - понедельник, и т.д.)
+    var currentDay = currentDate.getDay();
     var startOfWeek = new Date(currentDate);
-    startOfWeek.setDate(currentDate.getDate() - currentDay); // Получаем начало текущей недели
+    startOfWeek.setDate(currentDate.getDate() - currentDay);
     $(".day").each(function() {
         var day = new Date(startOfWeek);
-        day.setDate(startOfWeek.getDate() + $(this).index()); // Получаем дату текущего дня недели
-        // $(this).text(day.getDate()); // Выводим номер дня месяца
-
+        day.setDate(startOfWeek.getDate() + $(this).index())
         if (day.getDate() === currentDate.getDate()) {
             $(this).addClass("active");
         } else if (day < currentDate) {
@@ -184,17 +194,16 @@ $(document).ready(function() {
         }
     });
 });
-
 $('.prev').on('click', function (e) {
     e.preventDefault();
     const $ths = $(this);
     if($ths.hasClass('disabled')){}else{
-        const currentActive = $('.registration-step.active'); // get current active
-        currentActive.removeClass('active'); // remove class active
+        const currentActive = $('.registration-step.active');
+        currentActive.removeClass('active');
         if (currentActive.is(':first-child')) {
-            $('.registration-step').first().addClass('active'); // add class to first li if last child
+            $('.registration-step').first().addClass('active');
         } else {
-            currentActive.prev('.registration-step').addClass('active'); // otherwise add active to next li
+            currentActive.prev('.registration-step').addClass('active');
         }
     }
 });
@@ -203,18 +212,12 @@ $('.next').on('click', function (e) {
     const $ths = $(this);
     if($ths.hasClass('disabled')){}else{
         $('.prev').removeClass('disabled');
-        const currentActive = $('.registration-step.active'); // get current active
-        currentActive.removeClass('active'); // remove class active
+        const currentActive = $('.registration-step.active');
+        currentActive.removeClass('active');
         if (currentActive.is(':last-child')) {
-            $('.registration-step').last().addClass('active'); // add class to first li if last child
+            $('.registration-step').last().addClass('active');
         } else {
-            currentActive.next('.registration-step').addClass('active'); // otherwise add active to next li
+            currentActive.next('.registration-step').addClass('active');
         }
     }
 });
-//
-// var dayOfMonth = 4;
-// var date = new Date(new Date().getFullYear(), new Date().getMonth() + 1, dayOfMonth);
-// console.log(date);
-// var dayOfWeek = date.toLocaleDateString('ru-UA', { weekday: 'short' });
-// $('#result').text(dayOfWeek);

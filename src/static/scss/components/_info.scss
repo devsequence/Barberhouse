@@ -338,10 +338,37 @@
       }
     }
   }
+  .week-list-title{
+    text-transform: uppercase;
+  }
   .months-list{
+    ul{
+      left: 20rem;
+    }
     &-title{
       width: 100rem;
+    }
+  }
+  .months-list, .date-list{
+    &-title{
       text-align: center;
+      cursor: pointer;
+      position: relative;
+      &:after{
+        position: absolute;
+        content: '';
+        right: -28rem;
+        top: 0;
+        width: 28rem;
+        height: 28rem;
+        background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9L14 19L24 9' stroke='white'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+      }
+      &.active{
+        &:after{
+          transform: rotate(180deg);
+        }
+      }
     }
   }
   .time{
