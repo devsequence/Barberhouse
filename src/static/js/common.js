@@ -19,7 +19,7 @@ $('.registration-step .team-item').on('click', function (e) {
     $ths.addClass('active');
     $(".registration-nav").find("[data-name='master']").removeClass('disabled').html($thsTitle);
     $("[name='master']").val($thsTitle);
-    $('.next').removeClass('disabled');
+    $('.next').removeClass('disabled').trigger('click');
 });
 $('.registration-step .service-item').on('click', function (e) {
     e.preventDefault();
@@ -31,6 +31,7 @@ $('.registration-step .service-item').on('click', function (e) {
     $(".registration-nav").find("[data-name='service']").removeClass('disabled').html($thsTitle);
     $('.subtotal').text($thsPrice);
     $("[name='service']").val($thsTitle);
+    $('.next').trigger('click');
 });
 function updateNavDate(){
     const $thsDay = $('.date-list-title').text();
