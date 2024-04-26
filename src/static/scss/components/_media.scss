@@ -349,5 +349,18 @@
         }
       }
     }
+    .service{
+      &-item{
+        &-title{
+          font-size: 18rem;
+        }
+      }
+    }
+    .time{
+      column-gap: 10rem;
+      li{
+        margin-bottom: 16rem;
+      }
+    }
   }
 }
