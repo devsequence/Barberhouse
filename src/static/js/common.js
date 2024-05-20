@@ -81,6 +81,8 @@ function daysUpdate() {
             $month.addClass("active");
         } else if (i < currentMonth) {
             $month.addClass("disabled");
+        } else if (i > currentMonth + 1) {
+            $month.addClass("disabled");
         }
         $("#months").append($month);
     }

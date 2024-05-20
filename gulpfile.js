@@ -111,22 +111,22 @@ gulp.task('dev:css', function () {
 
         .pipe(browserSync.stream())
 });
-// gulp.task('dev:autoprefixerCss', () => {
-//     return gulp.src('./src/static/css/index.css')
-//         .pipe(sourcemaps.init())
-//         .pipe(postcss([ autoprefixer({ overrideBrowserslist: ['last 2 versions'],
-//             cascade: false}) ]))
-//         .pipe(sourcemaps.write('.'))
-//         .pipe(gulp.dest('./dist/static/css/min'))
-// });
-// gulp.task('dev:minifyCss', () => {
-//     return gulp.src('./dist/static/css/min/*.css')
-//         .pipe(sourcemaps.init())
-//         .pipe(cleanCSS())
-//         .pipe(sourcemaps.write())
-//         .pipe(gulp.dest('./dist/static/css/compress'));
-//
-// });
+gulp.task('dev:autoprefixerCss', () => {
+    return gulp.src('./src/static/css/index.css')
+        .pipe(sourcemaps.init())
+        .pipe(postcss([ autoprefixer({ overrideBrowserslist: ['last 2 versions'],
+            cascade: false}) ]))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./dist/static/css/min'))
+});
+gulp.task('dev:minifyCss', () => {
+    return gulp.src('./dist/static/css/min/*.css')
+        .pipe(sourcemaps.init())
+        .pipe(cleanCSS())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('./dist/static/css/compress'));
+
+});
 gulp.task('build', function () {
     // runSequence('build:clean', 'build:production', 'build:move');
     runSequence('build:production', 'dev:autoprefixerCss', 'dev:minifyCss');
