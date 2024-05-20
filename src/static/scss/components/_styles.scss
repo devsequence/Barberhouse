@@ -185,6 +185,14 @@ input, textarea {
     color: $default;
   }
 }
+.btn-confirm{
+  transition: all ease 300ms;
+  &.disabled{
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+  }
+}
 .section-title{
   color: $default;
   font-family: $Inter;

@@ -19,7 +19,9 @@ $('.registration-step .team-item').on('click', function (e) {
     $ths.addClass('active');
     $(".registration-nav").find("[data-name='master']").removeClass('disabled').html($thsTitle);
     $("[name='master']").val($thsTitle);
-    $('.next').removeClass('disabled').trigger('click');
+    $ths.parents('.registration-step').removeClass('active').next().addClass('active')
+    // $('.next').removeClass('disabled').trigger('click');
+    $('.service-slider').get(0).slick.setPosition();
 });
 $('.registration-step .service-item').on('click', function (e) {
     e.preventDefault();
@@ -31,7 +33,7 @@ $('.registration-step .service-item').on('click', function (e) {
     $(".registration-nav").find("[data-name='service']").removeClass('disabled').html($thsTitle);
     $('.subtotal').text($thsPrice);
     $("[name='service']").val($thsTitle);
-    $('.next').trigger('click');
+    $ths.parents('.registration-step').removeClass('active').next().addClass('active')
 });
 function updateNavDate(){
     const $thsDay = $('.date-list-title').text();
@@ -43,9 +45,9 @@ function updateNavDate(){
     var dayOfMonth = $('#days li.active').text();
     var dOfMonth = $('#months .active').data('month-number') + 1;
     var date = new Date(new Date().getFullYear(), new Date().getMonth() - 4 + dOfMonth, dayOfMonth);
-    console.log(date);
     var dayOfWeek = date.toLocaleDateString('ru-UA', { weekday: 'short' });
-    $('.week-list-title').text(dayOfWeek)
+    $('.week-list-title').text(dayOfWeek);
+    $('.btn-confirm').removeClass('disabled');
 }
 
 $('.registration-step .time li').on('click', function (e) {
@@ -177,20 +179,20 @@ $(document).ready(function() {
         }
     });
 });
-$('.prev').on('click', function (e) {
-    e.preventDefault();
-    const $ths = $(this);
-    if($ths.hasClass('disabled')){}else{
-        const currentActive = $('.registration-step.active');
-        currentActive.removeClass('active');
-        if (currentActive.is(':first-child')) {
-            $('.registration-step').first().addClass('active');
-        } else {
-            currentActive.prev('.registration-step').addClass('active');
-        }
-    }
-});
-$('.next').on('click', function (e) {
+// $('.prev').on('click', function (e) {
+//     e.preventDefault();
+//     const $ths = $(this);
+//     if($ths.hasClass('disabled')){}else{
+//         const currentActive = $('.registration-step.active');
+//         currentActive.removeClass('active');
+//         if (currentActive.is(':first-child')) {
+//             $('.registration-step').first().addClass('active');
+//         } else {
+//             currentActive.prev('.registration-step').addClass('active');
+//         }
+//     }
+// });
+$('.btn-confirm').on('click', function (e) {
     e.preventDefault();
     const $ths = $(this);
     if($ths.hasClass('disabled')){}else{
@@ -203,4 +205,31 @@ $('.next').on('click', function (e) {
             currentActive.next('.registration-step').addClass('active');
         }
     }
+    $('.btn-confirm').addClass('disabled');
+});
+$('.team-slider').slick({
+    rows: 3,
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    loop:true,
+    nextArrow: '.team-button .next',
+    prevArrow: '.team-button .prev'
+});
+
+$('.service-slider').slick({
+    rows: 3,
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    loop:true,
+
+    nextArrow: '.service-button .next',
+    prevArrow: '.service-button .prev'
 });
