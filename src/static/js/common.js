@@ -51,6 +51,7 @@ function updateNavDate(){
     var dayOfWeek = date.toLocaleDateString('ru-UA', { weekday: 'short' });
     $('.week-list-title').text(dayOfWeek);
     $('.btn-confirm').removeClass('disabled');
+
 }
 
 $('.registration-step .time li').on('click', function (e) {
@@ -244,3 +245,7 @@ $('.service-slider').slick({
     nextArrow: '.service-button .next',
     prevArrow: '.service-button .prev'
 });
+$('.date-list-title').each(function (e) {
+    var dayOfMonth = $('#days li.active').text();
+    $(this).text(dayOfMonth);
+})

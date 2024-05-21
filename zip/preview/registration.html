@@ -18,6 +18,7 @@
 <link rel="preload" href="../static/fonts/Gilroy-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
 
+<link rel="stylesheet" href="../static/css/slick.css">
 <link rel="stylesheet" href="../static/css/style.css">
 <link rel="shortcut icon" href="../static/images/general/fav.png"/>
 </head>
@@ -64,63 +65,84 @@
 								<span data-name="date" class="disabled">Не выбрано</span>
 							</li>
 						</ul>
+                        <button class="btn btn-confirm btn-primary disabled" type="button">Подтвердить</button>
 					</div>
 					<div class="registration-inner">
 						<div class="registration-step active" data-step="step-1">
 
-							<div class="team-wrap">
-								<div class="team-item">
+							<div class="team-slider team-wrap">
+								<div id="team-1" class="slide team-item">
 									<a href="#" class="team-item-media">
 										<img src="../static/images/general/team-1.png" alt="team">
 									</a>
 									<div class="team-item-title">Артур Бадыков</div>
 								</div>
-								<div class="team-item">
+								<div id="team-2" class="slide team-item">
 									<a href="#" class="team-item-media">
 										<img src="../static/images/general/team-2.png" alt="team">
 									</a>
 									<div class="team-item-title">Тимур Сабиров</div>
 								</div>
-								<div class="team-item">
+								<div id="team-3" class="slide team-item">
 									<a href="#" class="team-item-media">
 										<img src="../static/images/general/team-3.png" alt="team">
 									</a>
 									<div class="team-item-title">Расул Газизов</div>
 								</div>
-								<div class="team-item">
+								<div id="team-4" class="slide team-item">
 									<a href="#" class="team-item-media">
 										<img src="../static/images/general/team-4.png" alt="team">
 									</a>
 									<div class="team-item-title">Вильдан Амиров</div>
 								</div>
-								<div class="team-item">
+								<div id="team-5" class="slide team-item">
 									<a href="#" class="team-item-media">
 										<img src="../static/images/general/team-5.png" alt="team">
 									</a>
 									<div class="team-item-title">Альберт Аитов</div>
 								</div>
-								<div class="team-item">
+								<div id="team-6" class="slide team-item">
 									<a href="#" class="team-item-media">
 										<img src="../static/images/general/team-6.png" alt="team">
 									</a>
 									<div class="team-item-title">Ильдус Шайхиев</div>
 								</div>
 							</div>
+							<div class="team-button registration-button">
+								<button type="button" class="prev"></button>
+								<button type="button" class="next"></button>
+							</div>
 						</div>
 						<div class="registration-step" data-step="step-2">
-							<div class="service-wrap">
-								<div class="service-item">
+							<div class="service-slider service-wrap">
+								<div id="service-1" class="slide service-item">
 									<div class="service-item-title">Взрослая стрижка</div>
 									<div class="service-item-price">1500 ₽</div>
 								</div>
-								<div class="service-item">
+								<div id="service-2" class="slide service-item">
 									<div class="service-item-title">Детская стрижка</div>
 									<div class="service-item-price">1100 ₽</div>
 								</div>
-								<div class="service-item">
+								<div id="service-3" class="slide service-item">
 									<div class="service-item-title">Стрижка машинкой</div>
 									<div class="service-item-price">800 ₽</div>
 								</div>
+								<div id="service-4" class="slide service-item">
+									<div class="service-item-title">Взрослая стрижка</div>
+									<div class="service-item-price">1500 ₽</div>
+								</div>
+								<div id="service-5" class="slide service-item">
+									<div class="service-item-title">Детская стрижка</div>
+									<div class="service-item-price">1100 ₽</div>
+								</div>
+								<div id="service-6" class="slide service-item">
+									<div class="service-item-title">Стрижка машинкой</div>
+									<div class="service-item-price">800 ₽</div>
+								</div>
+							</div>
+							<div class="service-button registration-button">
+								<button type="button" class="prev"></button>
+								<button type="button" class="next"></button>
 							</div>
 						</div>
 						<div class="registration-step" data-step="step-3">
@@ -150,6 +172,7 @@
 								<li>21:00</li>
 							</ul>
 							<div class="hidden not-available">В этот день нет свободного времени.</div>
+
 						</div>
 						<div class="registration-step" data-step="step-4">
 							<label class="hidden">
@@ -172,7 +195,6 @@
 								<label for="checkbox">
 									Я согласен с обработкой персональных данных
 								</label>
-
 							</div>
 							<div class="modal-subtotal">
 								Итого: <span class="subtotal">1500 ₽</span>
@@ -180,16 +202,7 @@
 							<button type="submit" class="btn-primary">записаться</button>
 						</div>
 					</div>
-					<div class="registration-button">
-						<button type="button" class="prev disabled"></button>
-						<button type="button" class="next disabled"></button>
-					</div>
-				</div>
-				<div class="registration-success">
-					<div class="registration-success-title">
-						Вы записаны!
-					</div>
-					<a href="index.html">Вернуться на главную</a>
+
 				</div>
 			</div>
 			</form>
@@ -220,7 +233,7 @@
                 </div>
                 <div class="footer-nav">
                     <ul>
-                        <li><a href="#" target="_blank">Telegram</a></li>
+                        <li><a href="https://t.me/barberxaus" target="_blank">Telegram</a></li>
                     </ul>
                 </div>
             </div>
