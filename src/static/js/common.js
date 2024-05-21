@@ -15,25 +15,27 @@ $('.registration-step .team-item').on('click', function (e) {
     e.preventDefault();
     const $ths = $(this);
     const $thsTitle = $ths.find('.team-item-title').text();
+    const $thsId = $ths.attr('id');
+
     $('.registration-step .team-item').removeClass('active');
     $ths.addClass('active');
     $(".registration-nav").find("[data-name='master']").removeClass('disabled').html($thsTitle);
-    $("[name='master']").val($thsTitle);
-    $ths.parents('.registration-step').removeClass('active').next().addClass('active')
-    // $('.next').removeClass('disabled').trigger('click');
+    $("[name='master']").val($thsId);
+    $ths.parents('.registration-step').removeClass('active').next().addClass('active');
     $('.service-slider').get(0).slick.setPosition();
 });
 
 $('.registration-step .service-item').on('click', function (e) {
     e.preventDefault();
     const $ths = $(this);
+    const $thsId = $ths.attr('id');
     const $thsTitle = $ths.find('.service-item-title').text();
     const $thsPrice = $ths.find('.service-item-price').text();
     $('.registration-step .service-item').removeClass('active');
     $ths.addClass('active');
     $(".registration-nav").find("[data-name='service']").removeClass('disabled').html($thsTitle);
     $('.subtotal').text($thsPrice);
-    $("[name='service']").val($thsTitle);
+    $("[name='service']").val($thsId);
     $ths.parents('.registration-step').removeClass('active').next().addClass('active')
 });
 function updateNavDate(){
