@@ -23,6 +23,7 @@ $('.registration-step .team-item').on('click', function (e) {
     // $('.next').removeClass('disabled').trigger('click');
     $('.service-slider').get(0).slick.setPosition();
 });
+
 $('.registration-step .service-item').on('click', function (e) {
     e.preventDefault();
     const $ths = $(this);
@@ -207,18 +208,26 @@ $('.btn-confirm').on('click', function (e) {
     }
     $('.btn-confirm').addClass('disabled');
 });
-$('.team-slider').slick({
-    rows: 3,
-    dots: false,
-    arrows: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    loop:true,
-    nextArrow: '.team-button .next',
-    prevArrow: '.team-button .prev'
+$('.team-slider').each(function (e) {
+    console.log();
+    if($('.team-slider .slide').length > 6){
+        $('.team-slider').slick({
+            rows: 3,
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            loop:true,
+            nextArrow: '.team-button .next',
+            prevArrow: '.team-button .prev'
+        });
+    }else{
+        $('.team-button').hide();
+    }
 });
+
 
 $('.service-slider').slick({
     rows: 3,

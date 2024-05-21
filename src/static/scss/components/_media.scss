@@ -344,9 +344,17 @@
       &-wrap{
         margin: 0 -4rem;
       }
+      &-slider{
+        .slick-slide{
+          > div{
+            padding: 0 4rem;
+          }
+        }
+      }
       &-item{
         width: 139rem;
         margin:0 4rem 8rem;
+
         &-title{
           font-size: 12rem;
         }
